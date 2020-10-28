@@ -27,6 +27,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import I18n from './src/i18n/i18n';
 
 import HomeScreen from './src/components/home';
 import SettingsScreen from './src/components/settings';
@@ -62,9 +63,7 @@ const App: () => React$Node = () => {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = focused
-                ? 'home-outline'
-                : 'home-outline';
+              iconName = focused ? 'home-outline' : 'home-outline';
             } else if (route.name === 'Settings') {
               iconName = focused ? 'settings-outline' : 'settings-outline';
             }
@@ -77,11 +76,22 @@ const App: () => React$Node = () => {
           activeTintColor: 'tomato',
           inactiveTintColor: 'gray',
         }}>
-        <Tab.Screen name="Home" component={HomeStackScreen} />
+        <Tab.Screen
+          name="Home"
+          component={HomeStackScreen}
+          options={({route}) => ({
+            tabBarLabel: I18n.t('nav.home'),
+            tabBarVisible: !route.state || route.state.index === 0,
+          })}
+        />
         <Tab.Screen
           name="Settings"
           component={SettingsStackScreen}
-          options={{tabBarBadge: 3}}
+          options={({route}) => ({
+            tabBarLabel: I18n.t('nav.settings'),
+            tabBarVisible: !route.state || route.state.index === 0,
+            tabBarBadge: 3
+          })}
         />
       </Tab.Navigator>
     </NavigationContainer>

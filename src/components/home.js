@@ -8,6 +8,7 @@ import {
   FlatList,
   StatusBar,
 } from 'react-native';
+import I18n from '../i18n/i18n';
 
 
 import functionList from '../configs/function-list';
@@ -30,6 +31,7 @@ function HomeScreen() {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
+      <Text>{I18n.t('common.save')}</Text>
         <FlatList
           data={functionList}
           renderItem={_renderItem}
