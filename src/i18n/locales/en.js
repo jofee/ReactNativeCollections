@@ -10,6 +10,10 @@ const en = {
     home:'Home',
     settings:'Settings',
   },
+  login:{
+    login:'login',
+    logout:'logout',
+  },
   settings: {
     version_update: 'version update',
   },

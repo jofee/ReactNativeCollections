@@ -10,6 +10,10 @@ const zh = {
     home:'首页',
     settings:'设置',
   },
+  login:{
+    login:'登录',
+    logout:'注销',
+  },
   settings: {
     version_update: '版本升级',
   },

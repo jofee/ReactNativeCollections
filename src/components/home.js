@@ -16,7 +16,7 @@ import functionList from '../configs/function-list';
 function HomeScreen() {
   const _renderItem = ({item}) => {
     return (
-      <View style={styles.container}>
+      <View style={styles.itemContainer}>
         <Image
           source={require('../resources/default.png')}
           style={styles.thumbnail}
@@ -30,8 +30,7 @@ function HomeScreen() {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-      <Text>{I18n.t('common.save')}</Text>
+      <SafeAreaView style={styles.container}>
         <FlatList
           data={functionList}
           renderItem={_renderItem}
@@ -45,10 +44,13 @@ function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F5FCFF',
+  },
+  itemContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   rightContainer: {
     flex: 1,

@@ -2,26 +2,28 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
+  Image,
   View,
   Text,
-  TouchableOpacity,
+  Button,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import I18n from '../i18n/i18n';
 import AuthContext from '../common/auth-context';
 
-function SettingsScreen() {
-  const {signOut} = React.useContext(AuthContext);
+function LoginScreen() {
+  const {signIn} = React.useContext(AuthContext);
+  console.log(signIn);
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.container}>
-      <TouchableOpacity
+        <TouchableOpacity
           onPress={() => {
-            signOut();
+            signIn(null);
           }}>
-          <Text>{I18n.t('login.logout')}</Text>
+          <Text>{I18n.t('login.login')}</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </>
@@ -36,4 +38,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
 });
-export default SettingsScreen;
+
+export default LoginScreen;
