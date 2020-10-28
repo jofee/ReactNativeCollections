@@ -17,7 +17,7 @@ function LoginScreen() {
   console.log(signIn);
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="default" />
       <SafeAreaView style={styles.container}>
         <TouchableOpacity
           onPress={() => {

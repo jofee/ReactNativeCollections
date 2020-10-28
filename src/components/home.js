@@ -9,7 +9,7 @@ import {
   StatusBar,
 } from 'react-native';
 import I18n from '../i18n/i18n';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import functionList from '../configs/function-list';
 
@@ -17,10 +17,7 @@ function HomeScreen() {
   const _renderItem = ({item}) => {
     return (
       <View style={styles.itemContainer}>
-        <Image
-          source={require('../resources/default.png')}
-          style={styles.thumbnail}
-        />
+        <Ionicons name="logo-react" size={30} color={'green'} />
         <View style={styles.rightContainer}>
           <Text style={styles.title}>{item.title}</Text>
         </View>
@@ -29,7 +26,7 @@ function HomeScreen() {
   };
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="default" />
       <SafeAreaView style={styles.container}>
         <FlatList
           data={functionList}
@@ -49,11 +46,13 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    padding:5,
   },
   rightContainer: {
-    flex: 1,
+    alignItems: 'flex-start',
+    marginLeft:10,
   },
   title: {
     fontSize: 20,

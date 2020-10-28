@@ -28,6 +28,7 @@ import WelcomeScreen from './src/components/welcome';
 import LoginScreen from './src/components/login';
 import HomeScreen from './src/components/home';
 import SettingsScreen from './src/components/settings';
+import MultiLanguageScreen from './src/components/settings/multi-language';
 
 const SignStack = createStackNavigator();
 
@@ -49,7 +50,7 @@ const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator headerMode="none">
       <HomeStack.Screen name="Home" component={HomeScreen} />
     </HomeStack.Navigator>
   );
@@ -60,7 +61,17 @@ const SettingsStack = createStackNavigator();
 function SettingsStackScreen() {
   return (
     <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+      <SettingsStack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <SettingsStack.Screen
+        name="MultiLanguage"
+        component={MultiLanguageScreen}
+      />
     </SettingsStack.Navigator>
   );
 }
@@ -85,13 +96,14 @@ function BottomTabScreen() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: 'green',
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen
         name="Home"
         component={HomeStackScreen}
         options={({route}) => ({
+          headerShown: false,
           tabBarLabel: I18n.t('nav.home'),
           tabBarVisible: !route.state || route.state.index === 0,
         })}
@@ -100,6 +112,7 @@ function BottomTabScreen() {
         name="Settings"
         component={SettingsStackScreen}
         options={({route}) => ({
+          headerShown: false,
           tabBarLabel: I18n.t('nav.settings'),
           tabBarVisible: !route.state || route.state.index === 0,
           tabBarBadge: 3,
@@ -203,9 +216,21 @@ const App = () => {
           ) : (
             <>
               {state.userToken == null ? (
-                <Stack.Screen name="Sign" component={SignStackScreen} />
+                <Stack.Screen
+                  name="Sign"
+                  component={SignStackScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
               ) : (
-                <Stack.Screen name="BottomTab" component={BottomTabScreen} />
+                <Stack.Screen
+                  name="BottomTab"
+                  component={BottomTabScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
               )}
             </>
           )}

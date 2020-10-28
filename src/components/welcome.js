@@ -6,7 +6,7 @@ import {View, StatusBar} from 'react-native';
 function WelcomeScreen() {
   return (
     <View style={{flex: 1}}>
-      <StatusBar backgroundColor="#4785BE" barStyle="light-content" />
+      <StatusBar barStyle="default" />
     </View>
   );
   //   const dispatch = () => {

@@ -6,16 +6,23 @@ const en = {
     cancel: 'cancel',
     network_request_failed: 'network request failed',
   },
-  nav:{
-    home:'Home',
-    settings:'Settings',
+  nav: {
+    home: 'Home',
+    settings: 'Settings',
   },
-  login:{
-    login:'login',
-    logout:'logout',
+  login: {
+    login: 'login',
+    logout: 'logout',
   },
   settings: {
-    version_update: 'version update',
+    about: 'about',
+    language: 'language',
+    update: 'version update',
+  },
+  language: {
+    title: 'Language',
+    chinese: '中文',
+    english: 'English',
   },
 };
 export default en;
