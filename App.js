@@ -81,10 +81,10 @@ const Tab = createBottomTabNavigator();
 function BottomTabScreen() {
   return (
     <Tab.Navigator
+      backBehavior="initialRoute"
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
-
           if (route.name === 'Home') {
             iconName = focused ? 'home-outline' : 'home-outline';
           } else if (route.name === 'Settings') {
@@ -158,13 +158,17 @@ const App = () => {
     // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
       let userToken;
+      let language;
 
       try {
         userToken = await AsyncStorage.getItem('userToken');
+        language = await AsyncStorage.getItem('language');
       } catch (e) {
         // Restoring token failed
       }
-      console.log(userToken);
+      if (language) {
+        I18n.locale = language;
+      }
       // After restoring token, we may need to validate it in production apps
 
       // This will switch to the App screen or Auth screen and this loading
