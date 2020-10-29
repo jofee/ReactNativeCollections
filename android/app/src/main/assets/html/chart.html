@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- 引入 ECharts 文件 -->
+    <script src="./echarts.min.js"></script>
+  </head>
+
+  <body style="height: 100%; width: 100%; margin: 0; padding: 0">
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="height: 100%; overflow: auto"></div>
+    <script type="text/javascript">
+      var myChart = echarts.init(document.getElementById('main'));
+      //没有这段代码，图表会不展示
+      window.addEventListener('resize', () => {
+        myChart.resize();//echarts不显示问题
+      });
+      //展示图表数据
+      function showChart(data) {
+        let option = {
+          grid: {
+            containLabel: true,
+          },
+          xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          },
+          yAxis: {
+            type: 'value',
+          },
+          series: [
+            {
+              data: data,
+              type: 'line',
+            },
+          ],
+        };
+
+        myChart.setOption(option, true);
+      }
+      //测试,可直接在浏览器打开测试
+      //   showChart([820, 932, 901, 934, 1290, 1330, 1320]); //使用时注释此行
+    </script>
+  </body>
+</html>

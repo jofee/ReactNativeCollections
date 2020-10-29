@@ -30,6 +30,7 @@ import HomeScreen from './src/components/home';
 import SettingsScreen from './src/components/settings';
 import MultiLanguageScreen from './src/components/settings/multi-language';
 import DemoIntervalScreen from './src/components/functions/demo-interval';
+import DemoEchartScreen from './src/components/functions/demo-echart';
 
 const SignStack = createStackNavigator();
 
@@ -54,6 +55,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="DemoInterval" component={DemoIntervalScreen} />
+      <HomeStack.Screen name="DemoEchart" component={DemoEchartScreen} />
     </HomeStack.Navigator>
   );
 }

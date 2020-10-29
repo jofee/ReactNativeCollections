@@ -15,7 +15,7 @@ const functionList = [
     id: '3',
     title: 'echart',
     icon: 'logo-react',
-    screen: '',
+    screen: 'DemoEchart',
   },
   {
     id: '4',
