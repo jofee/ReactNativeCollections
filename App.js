@@ -29,6 +29,7 @@ import LoginScreen from './src/components/login';
 import HomeScreen from './src/components/home';
 import SettingsScreen from './src/components/settings';
 import MultiLanguageScreen from './src/components/settings/multi-language';
+import DemoIntervalScreen from './src/components/functions/demo-interval';
 
 const SignStack = createStackNavigator();
 
@@ -50,12 +51,24 @@ const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator headerMode="none">
+    <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="DemoInterval" component={DemoIntervalScreen} />
     </HomeStack.Navigator>
   );
 }
-
+//页面过度动画
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
 const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen() {
@@ -71,6 +84,14 @@ function SettingsStackScreen() {
       <SettingsStack.Screen
         name="MultiLanguage"
         component={MultiLanguageScreen}
+        options={{
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
+          transitionSpec: {
+            open: config,
+            close: config,
+          },
+        }}
       />
     </SettingsStack.Navigator>
   );
@@ -103,7 +124,6 @@ function BottomTabScreen() {
         name="Home"
         component={HomeStackScreen}
         options={({route}) => ({
-          headerShown: false,
           tabBarLabel: I18n.t('nav.home'),
           tabBarVisible: !route.state || route.state.index === 0,
         })}
@@ -112,7 +132,6 @@ function BottomTabScreen() {
         name="Settings"
         component={SettingsStackScreen}
         options={({route}) => ({
-          headerShown: false,
           tabBarLabel: I18n.t('nav.settings'),
           tabBarVisible: !route.state || route.state.index === 0,
           tabBarBadge: 3,

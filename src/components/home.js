@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  Image,
+  TouchableOpacity,
   View,
   Text,
   FlatList,
@@ -13,15 +13,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import functionList from '../configs/function-list';
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   const _renderItem = ({item}) => {
     return (
-      <View style={styles.itemContainer}>
-        <Ionicons name="logo-react" size={30} color={'green'} />
+      <TouchableOpacity
+        style={styles.itemContainer}
+        onPress={() => {
+          navigation.navigate(item.screen);
+        }}>
+        <Ionicons name={item.icon} size={30} color={'green'} />
         <View style={styles.rightContainer}>
           <Text style={styles.title}>{item.title}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   return (
@@ -48,11 +52,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    padding:5,
+    padding: 5,
   },
   rightContainer: {
     alignItems: 'flex-start',
-    marginLeft:10,
+    marginLeft: 10,
   },
   title: {
     fontSize: 20,
